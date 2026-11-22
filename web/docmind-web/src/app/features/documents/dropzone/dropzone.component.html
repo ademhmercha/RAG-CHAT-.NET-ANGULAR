@@ -1,0 +1,28 @@
+<div
+  class="dropzone"
+  [class.dragging]="dragging()"
+  data-testid="dropzone"
+  (dragenter)="onDragEnter($event)"
+  (dragover)="onDragOver($event)"
+  (dragleave)="onDragLeave()"
+  (drop)="onDrop($event)"
+>
+  <mat-icon class="icon" aria-hidden="true">cloud_upload</mat-icon>
+  <p class="title">
+    {{ (dragging() ? 'documents.dropzone.active' : 'documents.dropzone.title') | transloco }}
+  </p>
+  <p class="hint">{{ 'documents.dropzone.hint' | transloco: { maxSize: maxSizeMb } }}</p>
+
+  <label mat-flat-button class="browse">
+    <mat-icon>attach_file</mat-icon>
+    {{ 'documents.dropzone.browse' | transloco }}
+    <input
+      class="file-input"
+      type="file"
+      multiple
+      data-testid="file-input"
+      [accept]="accept"
+      (change)="onPick($event)"
+    />
+  </label>
+</div>

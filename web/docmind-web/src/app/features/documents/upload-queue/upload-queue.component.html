@@ -1,0 +1,60 @@
+<section class="queue" [attr.aria-label]="'documents.upload.title' | transloco">
+  <header class="header">
+    <h2>{{ 'documents.upload.title' | transloco }}</h2>
+    @if (canClear()) {
+      <button mat-button type="button" (click)="finishedCleared.emit()">
+        {{ 'documents.upload.clear' | transloco }}
+      </button>
+    }
+  </header>
+
+  <ul class="list">
+    @for (upload of uploads(); track upload.id) {
+      <li class="item" [class]="upload.state" data-testid="upload-item">
+        <mat-icon class="icon" aria-hidden="true">{{ icon(upload) }}</mat-icon>
+
+        <div class="details">
+          <div class="line">
+            <span class="name" [title]="upload.fileName">{{ upload.fileName }}</span>
+            <span class="meta">
+              {{ upload.sizeBytes | dmBytes: language() }} ·
+              {{ 'documents.upload.state.' + upload.state | transloco }}
+            </span>
+          </div>
+
+          @if (isActive(upload)) {
+            <mat-progress-bar
+              mode="determinate"
+              [value]="upload.progress"
+              [attr.aria-label]="'documents.upload.progress' | transloco: { name: upload.fileName }"
+            />
+          }
+
+          @if (upload.error) {
+            <p class="error" role="alert">{{ upload.error }}</p>
+          }
+        </div>
+
+        @if (isActive(upload)) {
+          <button
+            mat-icon-button
+            type="button"
+            (click)="uploadCancelled.emit(upload.id)"
+            [attr.aria-label]="'documents.upload.cancel' | transloco: { name: upload.fileName }"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        } @else {
+          <button
+            mat-icon-button
+            type="button"
+            (click)="uploadDismissed.emit(upload.id)"
+            [attr.aria-label]="'documents.upload.dismiss' | transloco: { name: upload.fileName }"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        }
+      </li>
+    }
+  </ul>
+</section>

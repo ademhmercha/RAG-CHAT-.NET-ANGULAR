@@ -1,0 +1,63 @@
+:host {
+  display: block;
+}
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 2rem 1.5rem;
+  border: 2px dashed var(--mat-sys-outline);
+  border-radius: var(--dm-radius-card);
+  background: var(--mat-sys-surface-container-low);
+  text-align: center;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+
+  &.dragging {
+    border-color: var(--mat-sys-primary);
+    background: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+  }
+
+  &:focus-within {
+    border-color: var(--mat-sys-primary);
+  }
+}
+
+.icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  color: var(--mat-sys-primary);
+  font-size: 2.75rem;
+}
+
+.title {
+  margin: 0.25rem 0 0;
+  font: var(--mat-sys-title-medium);
+}
+
+.hint {
+  margin: 0 0 0.75rem;
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-body-medium);
+}
+
+.dragging .hint {
+  color: inherit;
+}
+
+.browse {
+  position: relative;
+  cursor: pointer;
+}
+
+.file-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+}

@@ -1,0 +1,137 @@
+<div class="dm-page documents">
+  <header class="page-header">
+    <div>
+      <h1 class="dm-page-title">{{ 'documents.title' | transloco }}</h1>
+      <p class="subtitle">{{ 'documents.subtitle' | transloco }}</p>
+    </div>
+  </header>
+
+  <dm-dropzone (filesSelected)="store.upload($event)" />
+
+  @if (store.uploads().length > 0) {
+    <dm-upload-queue
+      class="queue"
+      [uploads]="store.uploads()"
+      [canClear]="store.hasFinishedUploads()"
+      (uploadCancelled)="store.cancelUpload($event)"
+      (uploadDismissed)="store.dismissUpload($event)"
+      (finishedCleared)="store.clearFinishedUploads()"
+    />
+  }
+
+  <section class="library" [attr.aria-label]="'documents.table.label' | transloco">
+    <div class="toolbar">
+      <mat-button-toggle-group
+        class="filters"
+        hideSingleSelectionIndicator
+        [value]="filterValue()"
+        (change)="onFilter($event.value)"
+        [attr.aria-label]="'documents.filter.label' | transloco"
+      >
+        <mat-button-toggle value="all">{{ 'documents.filter.all' | transloco }}</mat-button-toggle>
+        @for (status of statuses; track status) {
+          <mat-button-toggle [value]="status">
+            {{ 'documents.status.' + status | transloco }}
+          </mat-button-toggle>
+        }
+      </mat-button-toggle-group>
+
+      @if (store.live() !== 'idle') {
+        <span class="live" [class]="store.live()" role="status">
+          <span class="dot" aria-hidden="true"></span>
+          {{ 'documents.live.' + store.live() | transloco }}
+        </span>
+      }
+    </div>
+
+    @if (store.loading() && !store.loaded()) {
+      <div class="skeletons" aria-hidden="true">
+        @for (row of skeletonRows; track row) {
+          <dm-skeleton variant="block" height="3.25rem" />
+        }
+      </div>
+    } @else if (store.failed() && !store.loaded()) {
+      <dm-error-state [message]="'documents.error' | transloco" (retry)="store.load()" />
+    } @else if (store.items().length === 0) {
+      @if (store.isFiltered()) {
+        <dm-empty-state
+          icon="filter_alt_off"
+          [title]="'documents.emptyFiltered.title' | transloco"
+          [description]="'documents.emptyFiltered.description' | transloco"
+        />
+      } @else {
+        <dm-empty-state
+          icon="description"
+          [title]="'documents.empty.title' | transloco"
+          [description]="'documents.empty.description' | transloco"
+        />
+      }
+    } @else {
+      <div class="table-wrap" [class.busy]="store.loading()">
+        <table class="table" data-testid="documents-table">
+          <thead>
+            <tr>
+              <th scope="col">{{ 'documents.columns.name' | transloco }}</th>
+              <th scope="col">{{ 'documents.columns.status' | transloco }}</th>
+              <th scope="col" class="numeric">{{ 'documents.columns.pages' | transloco }}</th>
+              <th scope="col" class="numeric">{{ 'documents.columns.size' | transloco }}</th>
+              <th scope="col">{{ 'documents.columns.added' | transloco }}</th>
+              <th scope="col" class="actions">
+                <span class="visually-hidden">{{ 'documents.columns.actions' | transloco }}</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (document of store.items(); track document.id) {
+              <tr data-testid="document-row">
+                <th scope="row" class="name-cell">
+                  <mat-icon aria-hidden="true">
+                    {{ document.contentType === 'application/pdf' ? 'picture_as_pdf' : 'article' }}
+                  </mat-icon>
+                  <span class="name" [title]="document.fileName">{{ document.fileName }}</span>
+                </th>
+                <td [attr.data-label]="'documents.columns.status' | transloco">
+                  <dm-status-chip [status]="document.status" />
+                  @if (document.status === 'Failed' && document.errorMessage) {
+                    <p class="reason">
+                      {{ 'documents.failedReason' | transloco: { reason: document.errorMessage } }}
+                    </p>
+                  }
+                </td>
+                <td class="numeric" [attr.data-label]="'documents.columns.pages' | transloco">
+                  {{ document.status === 'Ready' ? document.pageCount : '—' }}
+                </td>
+                <td class="numeric" [attr.data-label]="'documents.columns.size' | transloco">
+                  {{ document.sizeBytes | dmBytes: language() }}
+                </td>
+                <td [attr.data-label]="'documents.columns.added' | transloco">
+                  {{ document.createdAt | dmDateTime: language() }}
+                </td>
+                <td class="actions">
+                  <button
+                    mat-icon-button
+                    type="button"
+                    (click)="remove(document)"
+                    [attr.aria-label]="
+                      'documents.delete.action' | transloco: { name: document.fileName }
+                    "
+                  >
+                    <mat-icon>delete_outline</mat-icon>
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <mat-paginator
+        [length]="store.totalCount()"
+        [pageIndex]="store.page() - 1"
+        [pageSize]="store.pageSize()"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="onPage($event)"
+      />
+    }
+  </section>
+</div>
