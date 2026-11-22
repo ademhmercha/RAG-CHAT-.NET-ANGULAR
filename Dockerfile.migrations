@@ -1,0 +1,30 @@
+# syntax=docker/dockerfile:1.7
+# Builds a self-contained EF Core migration bundle (no SDK needed at deploy time).
+#   docker build -f Dockerfile.migrations -t docmind-migrations .
+#   docker run --rm docmind-migrations --connection "Host=...;Database=docmind;Username=...;Password=..."
+ARG DOTNET_VERSION=10.0
+
+FROM mcr.microsoft.com/dotnet/sdk:${DOTNET_VERSION} AS build
+WORKDIR /src
+
+COPY global.json nuget.config Directory.Build.props Directory.Packages.props .editorconfig ./
+COPY .config .config
+COPY src/DocMind.Domain/DocMind.Domain.csproj src/DocMind.Domain/
+COPY src/DocMind.Application/DocMind.Application.csproj src/DocMind.Application/
+COPY src/DocMind.Infrastructure/DocMind.Infrastructure.csproj src/DocMind.Infrastructure/
+RUN dotnet tool restore && dotnet restore src/DocMind.Infrastructure/DocMind.Infrastructure.csproj --runtime linux-x64
+
+COPY src ./src
+RUN dotnet ef migrations bundle \
+    --project src/DocMind.Infrastructure \
+    --startup-project src/DocMind.Infrastructure \
+    --self-contained --runtime linux-x64 \
+    --configuration Release --force \
+    --output /out/efbundle
+
+FROM mcr.microsoft.com/dotnet/runtime-deps:${DOTNET_VERSION}-noble-chiseled AS final
+WORKDIR /app
+COPY --from=build /out/efbundle ./efbundle
+
+USER $APP_UID
+ENTRYPOINT ["./efbundle"]
