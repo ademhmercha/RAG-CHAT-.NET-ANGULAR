@@ -1,0 +1,351 @@
+{
+  "common": {
+    "dismiss": "Fermer",
+    "retry": "Réessayer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "save": "Enregistrer",
+    "close": "Fermer",
+    "confirm": "Confirmer",
+    "copy": "Copier",
+    "copied": "Copié",
+    "search": "Rechercher",
+    "pagination": {
+      "itemsPerPage": "Par page :",
+      "nextPage": "Page suivante",
+      "previousPage": "Page précédente",
+      "firstPage": "Première page",
+      "lastPage": "Dernière page",
+      "range": "{{ start }} – {{ end }} sur {{ total }}",
+      "rangeEmpty": "0 sur {{ total }}"
+    }
+  },
+  "layout": {
+    "skipToContent": "Aller au contenu principal",
+    "mainNavigation": "Navigation principale",
+    "openNavigation": "Ouvrir la navigation",
+    "home": "Accueil DocMind",
+    "language": "Langue",
+    "theme": "Thème",
+    "userMenu": "Menu du compte"
+  },
+  "nav": {
+    "chat": "Discussion",
+    "documents": "Documents",
+    "settings": "Paramètres"
+  },
+  "theme": {
+    "system": "Système",
+    "light": "Clair",
+    "dark": "Sombre"
+  },
+  "language": {
+    "en": "English",
+    "fr": "Français"
+  },
+  "errors": {
+    "generic": {
+      "title": "Une erreur est survenue"
+    },
+    "network": "Impossible de joindre le serveur. Vérifiez votre connexion et réessayez.",
+    "server": "Le serveur a rencontré un problème. Réessayez dans un instant.",
+    "unknown": "Un problème inattendu est survenu.",
+    "reference": "référence",
+    "status": {
+      "400": "La requête n'est pas valide.",
+      "401": "Connectez-vous pour continuer.",
+      "403": "Vous n'avez pas l'autorisation de faire cela.",
+      "404": "Nous n'avons pas trouvé ce que vous demandez.",
+      "409": "Cette action est en conflit avec l'état actuel.",
+      "413": "Le contenu est trop volumineux.",
+      "415": "Ce type de fichier n'est pas pris en charge.",
+      "429": "Trop de requêtes. Patientez un instant puis réessayez."
+    },
+    "codes": {
+      "auth": {
+        "invalid_credentials": "L'e-mail ou le mot de passe est incorrect.",
+        "email_taken": "Un compte existe déjà avec cet e-mail.",
+        "invalid_refresh_token": "Votre session a expiré. Reconnectez-vous.",
+        "user_not_found": "Ce compte n'existe plus.",
+        "invalid_registration": "Le compte n'a pas pu être créé avec ces informations."
+      },
+      "validation": {
+        "failed": "Certains champs ne sont pas valides. Vérifiez-les puis réessayez."
+      },
+      "conversations": {
+        "not_found": "Cette conversation n'existe plus."
+      },
+      "documents": {
+        "not_found": "Ce document n'existe plus.",
+        "not_ready": "Ce document est encore en cours de traitement.",
+        "empty_file": "Le fichier est vide.",
+        "unsupported_type": "Seuls les documents PDF et DOCX sont pris en charge.",
+        "content_mismatch": "Le contenu du fichier ne correspond pas à son extension.",
+        "too_large": "Le fichier dépasse la taille autorisée.",
+        "quota_exceeded": "Vous avez atteint le nombre maximal de documents. Supprimez-en pour en ajouter."
+      },
+      "chat": {
+        "provider_unavailable": "Le service d'IA est indisponible pour le moment. Réessayez.",
+        "empty_response": "L'IA a renvoyé une réponse vide. Réessayez.",
+        "persistence_failed": "La réponse n'a pas pu être enregistrée. Réessayez."
+      },
+      "rate_limit": {
+        "exceeded": "Vous allez trop vite. Patientez quelques secondes."
+      },
+      "request": {
+        "too_large": "La requête est trop volumineuse."
+      },
+      "server": {
+        "unexpected_error": "Le serveur a rencontré un problème. Réessayez dans un instant."
+      }
+    }
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "description": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "backHome": "Retour à DocMind"
+  },
+  "chat": {
+    "title": "Discussion",
+    "newChat": "Nouvelle discussion",
+    "defaultTitle": "Nouvelle conversation",
+    "openConversations": "Ouvrir les conversations",
+    "closeConversations": "Fermer les conversations",
+    "conversations": "Conversations",
+    "search": {
+      "label": "Rechercher dans les conversations",
+      "placeholder": "Rechercher une conversation",
+      "clear": "Effacer la recherche"
+    },
+    "groups": {
+      "today": "Aujourd'hui",
+      "yesterday": "Hier",
+      "week": "7 derniers jours",
+      "month": "30 derniers jours",
+      "older": "Plus ancien"
+    },
+    "list": {
+      "emptyTitle": "Aucune conversation",
+      "emptyDescription": "Démarrez une discussion pour poser des questions sur vos documents.",
+      "noResults": "Aucune conversation ne correspond à votre recherche.",
+      "error": "Les conversations n'ont pas pu être chargées.",
+      "actions": "Actions pour {{ title }}"
+    },
+    "actions": {
+      "rename": "Renommer",
+      "delete": "Supprimer"
+    },
+    "rename": {
+      "title": "Renommer la conversation",
+      "label": "Titre",
+      "save": "Renommer"
+    },
+    "delete": {
+      "title": "Supprimer cette conversation ?",
+      "message": "« {{ title }} » et tous ses messages seront définitivement supprimés.",
+      "confirm": "Supprimer",
+      "done": "Conversation supprimée."
+    },
+    "composer": {
+      "label": "Votre question",
+      "placeholder": "Posez une question sur vos documents…",
+      "hint": "Entrée pour envoyer, Maj+Entrée pour un retour à la ligne",
+      "send": "Envoyer",
+      "stop": "Arrêter la génération"
+    },
+    "empty": {
+      "title": "Posez vos questions sur vos documents",
+      "description": "DocMind recherche dans vos documents et répond en citant ses sources."
+    },
+    "suggestions": {
+      "label": "Questions suggérées",
+      "summarize": "Résume les points clés de mes documents",
+      "decisions": "Quelles décisions ou engagements sont mentionnés ?",
+      "dates": "Liste les dates et échéances importantes",
+      "compare": "Quelles sont les principales différences entre mes documents ?"
+    },
+    "message": {
+      "you": "Vous",
+      "assistant": "DocMind",
+      "copy": "Copier la réponse",
+      "copied": "Réponse copiée",
+      "codeCopied": "Code copié",
+      "stopped": "Génération arrêtée.",
+      "failed": "La réponse n'a pas pu être terminée.",
+      "thinking": "Réflexion…",
+      "responding": "DocMind est en train de répondre",
+      "scrollToLatest": "Aller au dernier message",
+      "ready": "La réponse est prête"
+    },
+    "tools": {
+      "search_documents": {
+        "running": "Recherche dans vos documents…",
+        "completed": "Documents consultés",
+        "failed": "La recherche a échoué"
+      },
+      "generic": {
+        "running": "Traitement…",
+        "completed": "Terminé",
+        "failed": "Échec"
+      }
+    },
+    "citations": {
+      "label": "Sources",
+      "page": "p. {{ page }}",
+      "openSource": "Ouvrir la source {{ index }} : {{ name }}, page {{ page }}",
+      "panelTitle": "Source",
+      "document": "Document",
+      "excerpt": "Extrait",
+      "close": "Fermer le panneau de source",
+      "unavailable": "Ce document n'est plus disponible.",
+      "openDocuments": "Ouvrir mes documents",
+      "totalPages": "{{ count }} pages au total"
+    },
+    "scope": {
+      "label": "Documents",
+      "all": "Tous les documents",
+      "selected": "{{ count }} sélectionné(s)",
+      "title": "Limiter la réponse à ces documents",
+      "none": "Aucun document n'est prêt pour le moment.",
+      "upload": "Importer des documents",
+      "clear": "Utiliser tous les documents"
+    },
+    "notFound": {
+      "title": "Conversation introuvable",
+      "description": "Elle a peut-être été supprimée. Démarrez plutôt une nouvelle discussion."
+    }
+  },
+  "documents": {
+    "title": "Documents",
+    "subtitle": "Importez les documents que DocMind peut consulter et citer.",
+    "dropzone": {
+      "title": "Glissez-déposez vos documents ici",
+      "active": "Déposez vos fichiers pour les importer",
+      "hint": "PDF ou DOCX, jusqu'à {{ maxSize }} Mo chacun",
+      "browse": "Choisir des fichiers"
+    },
+    "upload": {
+      "title": "Imports",
+      "clear": "Effacer les terminés",
+      "cancel": "Annuler l'import de {{ name }}",
+      "dismiss": "Masquer {{ name }}",
+      "progress": "Progression de l'import de {{ name }}",
+      "state": {
+        "queued": "En attente",
+        "uploading": "Import en cours",
+        "done": "Importé",
+        "failed": "Échec",
+        "cancelled": "Annulé"
+      },
+      "errors": {
+        "type": "Seuls les fichiers PDF et DOCX sont pris en charge.",
+        "tooLarge": "Ce fichier dépasse {{ maxSize }} Mo.",
+        "empty": "Ce fichier est vide."
+      }
+    },
+    "filter": {
+      "label": "Filtrer par statut",
+      "all": "Tous"
+    },
+    "status": {
+      "Pending": "En attente",
+      "Processing": "Traitement",
+      "Ready": "Prêt",
+      "Failed": "Échec"
+    },
+    "columns": {
+      "name": "Nom",
+      "size": "Taille",
+      "pages": "Pages",
+      "status": "Statut",
+      "added": "Ajouté",
+      "actions": "Actions"
+    },
+    "table": {
+      "label": "Vos documents"
+    },
+    "empty": {
+      "title": "Aucun document pour le moment",
+      "description": "Importez un fichier PDF ou DOCX pour commencer à l'interroger."
+    },
+    "emptyFiltered": {
+      "title": "Aucun document avec ce statut",
+      "description": "Essayez un autre filtre pour voir vos autres documents."
+    },
+    "error": "Vos documents n'ont pas pu être chargés.",
+    "delete": {
+      "action": "Supprimer {{ name }}",
+      "title": "Supprimer ce document ?",
+      "message": "« {{ name }} » et son contenu indexé seront définitivement supprimés.",
+      "confirm": "Supprimer",
+      "done": "Document supprimé."
+    },
+    "live": {
+      "connecting": "Connexion aux mises à jour en direct…",
+      "live": "Mises à jour en direct actives",
+      "offline": "Mises à jour en direct interrompues, reconnexion…"
+    },
+    "failedReason": "Échec du traitement : {{ reason }}"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "profile": {
+      "title": "Profil"
+    },
+    "appearance": {
+      "title": "Apparence",
+      "themeHint": "Suivez votre appareil ou choisissez un thème fixe.",
+      "languageHint": "La langue de toute l'interface."
+    },
+    "session": {
+      "title": "Session",
+      "hint": "Vous devrez vous reconnecter pour utiliser DocMind."
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Connexion",
+      "heading": "Bon retour",
+      "subtitle": "Connectez-vous pour continuer sur DocMind.",
+      "submit": "Se connecter",
+      "noAccount": "Nouveau sur DocMind ?",
+      "createAccount": "Créer un compte"
+    },
+    "register": {
+      "title": "Créer votre compte",
+      "heading": "Créez votre compte",
+      "subtitle": "Importez vos documents et commencez à poser vos questions.",
+      "submit": "Créer le compte",
+      "haveAccount": "Vous avez déjà un compte ?",
+      "signIn": "Se connecter"
+    },
+    "formLabel": "Authentification",
+    "tagline": "Posez des questions sur vos documents et obtenez des réponses accompagnées de leurs sources.",
+    "signOut": "Se déconnecter",
+    "sessionExpired": "Votre session a expiré. Reconnectez-vous.",
+    "fields": {
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "displayName": "Nom complet",
+      "togglePassword": "Afficher ou masquer le mot de passe"
+    },
+    "password": {
+      "length": "Au moins {{ count }} caractères",
+      "lowercase": "Une lettre minuscule",
+      "uppercase": "Une lettre majuscule",
+      "digit": "Un chiffre",
+      "met": "(respecté)",
+      "unmet": "(non respecté)"
+    }
+  },
+  "forms": {
+    "errors": {
+      "required": "Ce champ est obligatoire.",
+      "email": "Saisissez une adresse e-mail valide.",
+      "minlength": "Utilisez au moins {{ requiredLength }} caractères.",
+      "maxlength": "Utilisez au plus {{ requiredLength }} caractères.",
+      "passwordStrength": "Le mot de passe ne respecte pas les critères ci-dessous.",
+      "mismatch": "Les valeurs ne correspondent pas."
+    }
+  }
+}

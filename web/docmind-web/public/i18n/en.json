@@ -1,0 +1,351 @@
+{
+  "common": {
+    "dismiss": "Dismiss",
+    "retry": "Try again",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "save": "Save",
+    "close": "Close",
+    "confirm": "Confirm",
+    "copy": "Copy",
+    "copied": "Copied",
+    "search": "Search",
+    "pagination": {
+      "itemsPerPage": "Per page:",
+      "nextPage": "Next page",
+      "previousPage": "Previous page",
+      "firstPage": "First page",
+      "lastPage": "Last page",
+      "range": "{{ start }} – {{ end }} of {{ total }}",
+      "rangeEmpty": "0 of {{ total }}"
+    }
+  },
+  "layout": {
+    "skipToContent": "Skip to main content",
+    "mainNavigation": "Main navigation",
+    "openNavigation": "Open navigation",
+    "home": "DocMind home",
+    "language": "Language",
+    "theme": "Theme",
+    "userMenu": "Account menu"
+  },
+  "nav": {
+    "chat": "Chat",
+    "documents": "Documents",
+    "settings": "Settings"
+  },
+  "theme": {
+    "system": "System",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "language": {
+    "en": "English",
+    "fr": "Français"
+  },
+  "errors": {
+    "generic": {
+      "title": "Something went wrong"
+    },
+    "network": "Cannot reach the server. Check your connection and try again.",
+    "server": "The server ran into a problem. Please try again in a moment.",
+    "unknown": "Something unexpected happened.",
+    "reference": "reference",
+    "status": {
+      "400": "The request is not valid.",
+      "401": "Please sign in to continue.",
+      "403": "You are not allowed to do that.",
+      "404": "We could not find what you asked for.",
+      "409": "This action conflicts with the current state.",
+      "413": "The content is too large.",
+      "415": "This type of file is not supported.",
+      "429": "Too many requests. Please wait a moment and try again."
+    },
+    "codes": {
+      "auth": {
+        "invalid_credentials": "The email or password is incorrect.",
+        "email_taken": "An account with this email already exists.",
+        "invalid_refresh_token": "Your session has expired. Please sign in again.",
+        "user_not_found": "This account no longer exists.",
+        "invalid_registration": "The account could not be created with these details."
+      },
+      "validation": {
+        "failed": "Some fields are not valid. Please check them and try again."
+      },
+      "conversations": {
+        "not_found": "This conversation no longer exists."
+      },
+      "documents": {
+        "not_found": "This document no longer exists.",
+        "not_ready": "This document is still being processed.",
+        "empty_file": "The file is empty.",
+        "unsupported_type": "Only PDF and DOCX documents are supported.",
+        "content_mismatch": "The file content does not match its extension.",
+        "too_large": "The file is larger than the allowed size.",
+        "quota_exceeded": "You reached the maximum number of documents. Delete some to upload more."
+      },
+      "chat": {
+        "provider_unavailable": "The AI service is unavailable right now. Please try again.",
+        "empty_response": "The AI returned an empty answer. Please try again.",
+        "persistence_failed": "The answer could not be saved. Please try again."
+      },
+      "rate_limit": {
+        "exceeded": "You are going too fast. Please wait a few seconds."
+      },
+      "request": {
+        "too_large": "The request is too large."
+      },
+      "server": {
+        "unexpected_error": "The server ran into a problem. Please try again in a moment."
+      }
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or was moved.",
+    "backHome": "Back to DocMind"
+  },
+  "chat": {
+    "title": "Chat",
+    "newChat": "New chat",
+    "defaultTitle": "New conversation",
+    "openConversations": "Open conversations",
+    "closeConversations": "Close conversations",
+    "conversations": "Conversations",
+    "search": {
+      "label": "Search conversations",
+      "placeholder": "Search conversations",
+      "clear": "Clear search"
+    },
+    "groups": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "week": "Previous 7 days",
+      "month": "Previous 30 days",
+      "older": "Older"
+    },
+    "list": {
+      "emptyTitle": "No conversations yet",
+      "emptyDescription": "Start a chat to ask questions about your documents.",
+      "noResults": "No conversation matches your search.",
+      "error": "Conversations could not be loaded.",
+      "actions": "Actions for {{ title }}"
+    },
+    "actions": {
+      "rename": "Rename",
+      "delete": "Delete"
+    },
+    "rename": {
+      "title": "Rename conversation",
+      "label": "Title",
+      "save": "Rename"
+    },
+    "delete": {
+      "title": "Delete this conversation?",
+      "message": "\"{{ title }}\" and all its messages will be permanently deleted.",
+      "confirm": "Delete",
+      "done": "Conversation deleted."
+    },
+    "composer": {
+      "label": "Your question",
+      "placeholder": "Ask a question about your documents…",
+      "hint": "Enter to send, Shift+Enter for a new line",
+      "send": "Send",
+      "stop": "Stop generating"
+    },
+    "empty": {
+      "title": "Ask anything about your documents",
+      "description": "DocMind searches your documents and answers with cited sources."
+    },
+    "suggestions": {
+      "label": "Suggested questions",
+      "summarize": "Summarize the key points of my documents",
+      "decisions": "What decisions or commitments are mentioned?",
+      "dates": "List the important dates and deadlines",
+      "compare": "What are the main differences between my documents?"
+    },
+    "message": {
+      "you": "You",
+      "assistant": "DocMind",
+      "copy": "Copy answer",
+      "copied": "Answer copied",
+      "codeCopied": "Code copied",
+      "stopped": "Generation stopped.",
+      "failed": "The answer could not be completed.",
+      "thinking": "Thinking…",
+      "responding": "DocMind is answering",
+      "scrollToLatest": "Jump to latest",
+      "ready": "The answer is ready"
+    },
+    "tools": {
+      "search_documents": {
+        "running": "Searching your documents…",
+        "completed": "Documents searched",
+        "failed": "Search failed"
+      },
+      "generic": {
+        "running": "Working…",
+        "completed": "Done",
+        "failed": "Failed"
+      }
+    },
+    "citations": {
+      "label": "Sources",
+      "page": "p. {{ page }}",
+      "openSource": "Open source {{ index }}: {{ name }}, page {{ page }}",
+      "panelTitle": "Source",
+      "document": "Document",
+      "excerpt": "Excerpt",
+      "close": "Close source panel",
+      "unavailable": "This document is no longer available.",
+      "openDocuments": "Open my documents",
+      "totalPages": "{{ count }} pages in total"
+    },
+    "scope": {
+      "label": "Documents",
+      "all": "All documents",
+      "selected": "{{ count }} selected",
+      "title": "Limit the answer to these documents",
+      "none": "No document is ready yet.",
+      "upload": "Upload documents",
+      "clear": "Use all documents"
+    },
+    "notFound": {
+      "title": "Conversation not found",
+      "description": "It may have been deleted. Start a new chat instead."
+    }
+  },
+  "documents": {
+    "title": "Documents",
+    "subtitle": "Upload the documents DocMind can search and cite.",
+    "dropzone": {
+      "title": "Drag and drop your documents here",
+      "active": "Drop your files to upload them",
+      "hint": "PDF or DOCX, up to {{ maxSize }} MB each",
+      "browse": "Choose files"
+    },
+    "upload": {
+      "title": "Uploads",
+      "clear": "Clear finished",
+      "cancel": "Cancel upload of {{ name }}",
+      "dismiss": "Dismiss {{ name }}",
+      "progress": "Upload progress of {{ name }}",
+      "state": {
+        "queued": "Waiting",
+        "uploading": "Uploading",
+        "done": "Uploaded",
+        "failed": "Failed",
+        "cancelled": "Cancelled"
+      },
+      "errors": {
+        "type": "Only PDF and DOCX files are supported.",
+        "tooLarge": "This file is larger than {{ maxSize }} MB.",
+        "empty": "This file is empty."
+      }
+    },
+    "filter": {
+      "label": "Filter by status",
+      "all": "All"
+    },
+    "status": {
+      "Pending": "Pending",
+      "Processing": "Processing",
+      "Ready": "Ready",
+      "Failed": "Failed"
+    },
+    "columns": {
+      "name": "Name",
+      "size": "Size",
+      "pages": "Pages",
+      "status": "Status",
+      "added": "Added",
+      "actions": "Actions"
+    },
+    "table": {
+      "label": "Your documents"
+    },
+    "empty": {
+      "title": "No documents yet",
+      "description": "Upload a PDF or DOCX file to start asking questions about it."
+    },
+    "emptyFiltered": {
+      "title": "No document with this status",
+      "description": "Try another filter to see your other documents."
+    },
+    "error": "Your documents could not be loaded.",
+    "delete": {
+      "action": "Delete {{ name }}",
+      "title": "Delete this document?",
+      "message": "\"{{ name }}\" and its indexed content will be permanently deleted.",
+      "confirm": "Delete",
+      "done": "Document deleted."
+    },
+    "live": {
+      "connecting": "Connecting to live updates…",
+      "live": "Live updates on",
+      "offline": "Live updates paused, reconnecting…"
+    },
+    "failedReason": "Processing failed: {{ reason }}"
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": {
+      "title": "Profile"
+    },
+    "appearance": {
+      "title": "Appearance",
+      "themeHint": "Follow your device or pick a fixed theme.",
+      "languageHint": "The language of the whole interface."
+    },
+    "session": {
+      "title": "Session",
+      "hint": "You will need to sign in again to use DocMind."
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in",
+      "heading": "Welcome back",
+      "subtitle": "Sign in to continue to DocMind.",
+      "submit": "Sign in",
+      "noAccount": "New to DocMind?",
+      "createAccount": "Create an account"
+    },
+    "register": {
+      "title": "Create your account",
+      "heading": "Create your account",
+      "subtitle": "Upload your documents and start asking questions.",
+      "submit": "Create account",
+      "haveAccount": "Already have an account?",
+      "signIn": "Sign in"
+    },
+    "formLabel": "Authentication",
+    "tagline": "Ask questions about your documents and get answers with their sources.",
+    "signOut": "Sign out",
+    "sessionExpired": "Your session expired. Please sign in again.",
+    "fields": {
+      "email": "Email",
+      "password": "Password",
+      "displayName": "Full name",
+      "togglePassword": "Show or hide the password"
+    },
+    "password": {
+      "length": "At least {{ count }} characters",
+      "lowercase": "A lowercase letter",
+      "uppercase": "An uppercase letter",
+      "digit": "A digit",
+      "met": "(met)",
+      "unmet": "(not met)"
+    }
+  },
+  "forms": {
+    "errors": {
+      "required": "This field is required.",
+      "email": "Enter a valid email address.",
+      "minlength": "Use at least {{ requiredLength }} characters.",
+      "maxlength": "Use at most {{ requiredLength }} characters.",
+      "passwordStrength": "The password does not meet the requirements below.",
+      "mismatch": "The values do not match."
+    }
+  }
+}
