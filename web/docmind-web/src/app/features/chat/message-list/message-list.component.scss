@@ -1,0 +1,41 @@
+:host {
+  position: relative;
+  display: block;
+  height: 100%;
+  min-height: 0;
+}
+
+.scroller {
+  height: 100%;
+  padding: 0 1rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  outline-offset: -2px;
+}
+
+.thread {
+  width: 100%;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1rem 0 2rem;
+}
+
+.jump {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1rem;
+  animation: dm-fade-in 0.15s ease-out;
+}
+
+@keyframes dm-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jump {
+    animation: none;
+  }
+}

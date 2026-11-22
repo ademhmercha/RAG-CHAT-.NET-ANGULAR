@@ -1,0 +1,141 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 0.75rem 0.5rem;
+}
+
+.new-chat {
+  width: 100%;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0 0.5rem 0 0.75rem;
+  border-radius: var(--mat-sys-corner-full);
+  background: var(--mat-sys-surface-container-high);
+  color: var(--mat-sys-on-surface-variant);
+
+  &:focus-within {
+    outline: 2px solid var(--mat-sys-primary);
+  }
+
+  input {
+    flex: 1;
+    min-width: 0;
+    height: 2.5rem;
+    border: 0;
+    background: transparent;
+    color: var(--mat-sys-on-surface);
+    font: var(--mat-sys-body-medium);
+    outline: none;
+  }
+
+  mat-icon {
+    flex: none;
+  }
+}
+
+.groups {
+  flex: 1;
+  min-height: 0;
+  padding: 0.25rem 0.5rem 1rem;
+  overflow-y: auto;
+}
+
+.skeletons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem 0.25rem;
+}
+
+.group-title {
+  margin: 1rem 0.5rem 0.25rem;
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-label-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: var(--mat-sys-corner-medium);
+
+  &:hover,
+  &:focus-within {
+    background: var(--mat-sys-surface-container-high);
+  }
+
+  &.active {
+    background: var(--mat-sys-secondary-container);
+    color: var(--mat-sys-on-secondary-container);
+  }
+}
+
+.link {
+  flex: 1;
+  min-width: 0;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--mat-sys-corner-medium);
+  color: inherit;
+  font: var(--mat-sys-body-medium);
+  text-decoration: none;
+}
+
+.title {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.more {
+  flex: none;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+}
+
+.item:hover .more,
+.item:focus-within .more,
+.more[aria-expanded='true'] {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .more {
+    opacity: 1;
+  }
+}
+
+.empty,
+.no-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.5rem 0.75rem;
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-body-medium);
+  text-align: center;
+
+  strong {
+    color: var(--mat-sys-on-surface);
+  }
+}

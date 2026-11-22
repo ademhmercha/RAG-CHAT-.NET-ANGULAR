@@ -1,0 +1,87 @@
+<article class="message" [class.user]="isUser()" [attr.data-role]="message().role">
+  <div class="avatar" aria-hidden="true">
+    @if (isUser()) {
+      {{ auth.initials() }}
+    } @else {
+      <mat-icon>auto_awesome</mat-icon>
+    }
+  </div>
+
+  <div class="body">
+    <div class="author">
+      {{ (isUser() ? 'chat.message.you' : 'chat.message.assistant') | transloco }}
+    </div>
+
+    @if (isUser()) {
+      <p class="user-text">{{ message().content }}</p>
+    } @else {
+      @if (toolKey(); as key) {
+        <div class="tool" [class.failed]="tool()?.status === 'failed'" role="status">
+          @if (tool()?.status === 'running') {
+            <span class="spinner" aria-hidden="true"></span>
+          } @else {
+            <mat-icon aria-hidden="true">
+              {{ tool()?.status === 'failed' ? 'error_outline' : 'check_circle' }}
+            </mat-icon>
+          }
+          {{ key | transloco }}
+        </div>
+      }
+
+      @if (message().content) {
+        <div class="dm-markdown" [class.streaming]="isStreaming()" [innerHTML]="html()"></div>
+      } @else if (isStreaming() && !toolKey()) {
+        <div class="thinking" role="status">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          {{ 'chat.message.thinking' | transloco }}
+        </div>
+      }
+
+      @if (message().status === 'stopped') {
+        <p class="note">{{ 'chat.message.stopped' | transloco }}</p>
+      } @else if (message().status === 'failed') {
+        <p class="note error" role="alert">
+          <mat-icon aria-hidden="true">error_outline</mat-icon>
+          {{ message().error || ('chat.message.failed' | transloco) }}
+        </p>
+      }
+
+      @if (message().citations.length > 0) {
+        <div class="citations" role="group" [attr.aria-label]="'chat.citations.label' | transloco">
+          @for (citation of message().citations; track $index) {
+            <button
+              type="button"
+              class="citation"
+              [class.active]="isActive(citation)"
+              [attr.aria-label]="
+                'chat.citations.openSource'
+                  | transloco
+                    : { index: $index + 1, name: citation.documentName, page: citation.page }
+              "
+              (click)="citationSelected.emit({ citation, index: $index })"
+            >
+              <span class="index">{{ $index + 1 }}</span>
+              <span class="name">{{ citation.documentName }}</span>
+              <span class="page">{{
+                'chat.citations.page' | transloco: { page: citation.page }
+              }}</span>
+            </button>
+          }
+        </div>
+      }
+
+      @if (message().status === 'complete' && message().content) {
+        <div class="actions">
+          <button
+            mat-icon-button
+            type="button"
+            (click)="copyAnswer()"
+            [attr.aria-label]="'chat.message.copy' | transloco"
+          >
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+      }
+    }
+  </div>
+</article>

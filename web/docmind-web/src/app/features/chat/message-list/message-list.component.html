@@ -1,0 +1,32 @@
+<div
+  #scroller
+  class="scroller"
+  role="log"
+  aria-live="off"
+  tabindex="0"
+  [attr.aria-label]="'chat.title' | transloco"
+  (scroll)="onScroll()"
+>
+  <div class="thread">
+    @for (message of messages(); track $index) {
+      <dm-message-item
+        [message]="message"
+        [tool]="$last ? tool() : null"
+        [activeCitation]="activeCitation()"
+        (citationSelected)="citationSelected.emit($event)"
+      />
+    }
+  </div>
+</div>
+
+@if (!pinned()) {
+  <button
+    mat-mini-fab
+    type="button"
+    class="jump"
+    (click)="jumpToLatest()"
+    [attr.aria-label]="'chat.message.scrollToLatest' | transloco"
+  >
+    <mat-icon>arrow_downward</mat-icon>
+  </button>
+}

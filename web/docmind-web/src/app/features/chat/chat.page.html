@@ -1,0 +1,98 @@
+<div class="chat" [class.list-open]="listOpen()">
+  <aside class="list" [attr.aria-label]="'chat.conversations' | transloco">
+    <dm-conversation-list
+      [activeId]="chat.conversationId()"
+      (selected)="listOpen.set(false)"
+      (deleted)="onDeleted($event)"
+    />
+  </aside>
+
+  @if (listOpen()) {
+    <button
+      type="button"
+      class="scrim"
+      (click)="closeList()"
+      [attr.aria-label]="'chat.closeConversations' | transloco"
+    ></button>
+  }
+
+  <section class="thread">
+    <p class="dm-visually-hidden" role="status" aria-live="polite">{{ announcement() }}</p>
+
+    <header class="thread-header">
+      <button
+        mat-icon-button
+        type="button"
+        class="list-toggle"
+        (click)="listOpen.set(true)"
+        [attr.aria-label]="'chat.openConversations' | transloco"
+      >
+        <mat-icon>forum</mat-icon>
+      </button>
+      <h1 class="thread-title">{{ title() ?? ('chat.title' | transloco) }}</h1>
+    </header>
+
+    <div class="messages">
+      @if (chat.loading()) {
+        <div class="loading" aria-hidden="true">
+          <dm-skeleton variant="block" height="4rem" />
+          <dm-skeleton variant="block" height="7rem" />
+          <dm-skeleton variant="block" height="4rem" />
+        </div>
+      } @else if (chat.missing()) {
+        <dm-empty-state
+          icon="search_off"
+          [title]="'chat.notFound.title' | transloco"
+          [description]="'chat.notFound.description' | transloco"
+        >
+          <a mat-flat-button routerLink="/chat">{{ 'chat.newChat' | transloco }}</a>
+        </dm-empty-state>
+      } @else if (chat.isEmpty()) {
+        <dm-empty-state
+          icon="auto_awesome"
+          [title]="'chat.empty.title' | transloco"
+          [description]="'chat.empty.description' | transloco"
+        >
+          <div
+            class="suggestions"
+            role="group"
+            [attr.aria-label]="'chat.suggestions.label' | transloco"
+          >
+            @for (key of suggestionKeys; track key) {
+              <button type="button" class="suggestion" (click)="ask(key)">
+                {{ 'chat.suggestions.' + key | transloco }}
+              </button>
+            }
+          </div>
+        </dm-empty-state>
+      } @else {
+        <dm-message-list
+          [messages]="chat.messages()"
+          [tool]="chat.tool()"
+          [resetKey]="chat.conversationId()"
+          [activeCitation]="selection()?.citation ?? null"
+          (citationSelected)="selection.set($event)"
+        />
+      }
+    </div>
+
+    <dm-composer
+      [streaming]="chat.streaming()"
+      [disabled]="chat.loading() || chat.missing()"
+      (submitted)="submit($event)"
+      (stopped)="chat.stop()"
+    >
+      <dm-scope-selector composerTools class="scope" />
+    </dm-composer>
+  </section>
+
+  @if (selection(); as current) {
+    <div class="source">
+      <dm-citation-panel
+        [citation]="current.citation"
+        [index]="current.index"
+        (closed)="selection.set(null)"
+      />
+    </div>
+  }
+</div>

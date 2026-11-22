@@ -1,0 +1,100 @@
+<div class="header">
+  <a
+    mat-flat-button
+    class="new-chat"
+    routerLink="/chat"
+    (click)="selected.emit()"
+    data-testid="new-chat"
+  >
+    <mat-icon>add</mat-icon>
+    {{ 'chat.newChat' | transloco }}
+  </a>
+
+  <div class="search">
+    <mat-icon aria-hidden="true">search</mat-icon>
+    <input
+      type="search"
+      [value]="store.query()"
+      (input)="onSearch($event)"
+      [attr.aria-label]="'chat.search.label' | transloco"
+      [placeholder]="'chat.search.placeholder' | transloco"
+      autocomplete="off"
+    />
+    @if (store.query()) {
+      <button
+        mat-icon-button
+        type="button"
+        class="clear"
+        (click)="clearSearch()"
+        [attr.aria-label]="'chat.search.clear' | transloco"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    }
+  </div>
+</div>
+
+<nav class="groups" [attr.aria-label]="'chat.conversations' | transloco">
+  @if (store.loading() && !store.loaded()) {
+    <div class="skeletons" aria-hidden="true">
+      @for (row of skeletonRows; track row) {
+        <dm-skeleton variant="block" height="2.25rem" />
+      }
+    </div>
+  } @else if (store.failed() && store.isEmpty()) {
+    <dm-error-state [message]="'chat.list.error' | transloco" (retry)="store.load()" />
+  } @else if (store.isEmpty()) {
+    <div class="empty">
+      <strong>{{ 'chat.list.emptyTitle' | transloco }}</strong>
+      <span>{{ 'chat.list.emptyDescription' | transloco }}</span>
+    </div>
+  } @else if (store.filtered().length === 0) {
+    <p class="no-results" role="status">{{ 'chat.list.noResults' | transloco }}</p>
+  } @else {
+    @for (group of store.groups(); track group.key) {
+      <section>
+        <h3 class="group-title">{{ 'chat.groups.' + group.key | transloco }}</h3>
+        <ul>
+          @for (conversation of group.items; track conversation.id) {
+            <li class="item" [class.active]="conversation.id === activeId()">
+              <a
+                class="link"
+                [routerLink]="['/chat', conversation.id]"
+                [attr.aria-current]="conversation.id === activeId() ? 'page' : null"
+                [title]="displayTitle(conversation)"
+                (click)="selected.emit()"
+              >
+                <span class="title">{{ displayTitle(conversation) }}</span>
+              </a>
+              <button
+                mat-icon-button
+                type="button"
+                class="more"
+                [matMenuTriggerFor]="menu"
+                [matMenuTriggerData]="{ conversation }"
+                [attr.aria-label]="
+                  'chat.list.actions' | transloco: { title: displayTitle(conversation) }
+                "
+              >
+                <mat-icon>more_horiz</mat-icon>
+              </button>
+            </li>
+          }
+        </ul>
+      </section>
+    }
+  }
+</nav>
+
+<mat-menu #menu="matMenu">
+  <ng-template matMenuContent let-conversation="conversation">
+    <button mat-menu-item type="button" (click)="rename(conversation)">
+      <mat-icon>edit</mat-icon>
+      <span>{{ 'chat.actions.rename' | transloco }}</span>
+    </button>
+    <button mat-menu-item type="button" (click)="remove(conversation)">
+      <mat-icon>delete_outline</mat-icon>
+      <span>{{ 'chat.actions.delete' | transloco }}</span>
+    </button>
+  </ng-template>
+</mat-menu>

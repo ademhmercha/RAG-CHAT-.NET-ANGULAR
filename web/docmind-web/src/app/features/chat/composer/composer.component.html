@@ -1,0 +1,44 @@
+<form class="composer" (submit)="$event.preventDefault(); send()">
+  <ng-content select="[composerTools]" />
+
+  <div class="box">
+    <textarea
+      #field
+      cdkTextareaAutosize
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="8"
+      class="field"
+      rows="1"
+      [attr.maxlength]="maxLength"
+      [attr.aria-label]="'chat.composer.label' | transloco"
+      [placeholder]="'chat.composer.placeholder' | transloco"
+      [disabled]="disabled()"
+      (input)="onInput($event)"
+      (keydown)="onKeydown($event)"
+    ></textarea>
+
+    @if (streaming()) {
+      <button
+        mat-flat-button
+        type="button"
+        class="action stop"
+        (click)="stopped.emit()"
+        [attr.aria-label]="'chat.composer.stop' | transloco"
+      >
+        <mat-icon>stop</mat-icon>
+      </button>
+    } @else {
+      <button
+        mat-flat-button
+        type="submit"
+        class="action"
+        [disabled]="!canSend()"
+        [attr.aria-label]="'chat.composer.send' | transloco"
+      >
+        <mat-icon>arrow_upward</mat-icon>
+      </button>
+    }
+  </div>
+
+  <p class="hint">{{ 'chat.composer.hint' | transloco }}</p>
+</form>
