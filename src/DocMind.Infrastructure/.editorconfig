@@ -1,0 +1,3 @@
+[*.cs]
+# EF Core sets persisted properties through private setters.
+dotnet_diagnostic.S1144.severity = none

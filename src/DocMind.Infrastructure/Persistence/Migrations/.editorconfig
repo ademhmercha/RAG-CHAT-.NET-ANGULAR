@@ -1,0 +1,3 @@
+[*.cs]
+# EF Core scaffolds these files; they are never edited by hand.
+generated_code = true

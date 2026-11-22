@@ -1,0 +1,3 @@
+[Program.cs]
+# Program must stay a non-static partial class so WebApplicationFactory can target it.
+dotnet_diagnostic.S1118.severity = none
