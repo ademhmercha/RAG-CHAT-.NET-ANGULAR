@@ -1,0 +1,52 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.userprefs
+*.rsuser
+*.DotSettings.user
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+TestResults/
+*.trx
+coverage/
+*.coverage
+*.coveragexml
+artifacts/
+publish/
+
+## Secrets and local configuration
+.env
+.env.*
+!.env.example
+secrets.json
+appsettings.*.local.json
+appsettings.Local.json
+*.pfx
+*.pem
+*.key
+
+## OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+## Frontend (web/docmind-web) and infrastructure (infra/), added in later phases
+node_modules/
+dist/
+.angular/
+cdk.out/
+.terraform/
+*.tfstate
+*.tfstate.*
+
+## Claude Code local state
+.claude/settings.local.json
+
+# Local runtime data (Aspire shared storage)
+.data/

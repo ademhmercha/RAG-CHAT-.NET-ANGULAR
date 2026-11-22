@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/DocMind.Api/DocMind.Api.csproj" />
+    <Project Path="src/DocMind.AppHost/DocMind.AppHost.csproj" />
+    <Project Path="src/DocMind.Application/DocMind.Application.csproj" />
+    <Project Path="src/DocMind.Domain/DocMind.Domain.csproj" />
+    <Project Path="src/DocMind.Infrastructure/DocMind.Infrastructure.csproj" />
+    <Project Path="src/DocMind.McpServer/DocMind.McpServer.csproj" />
+    <Project Path="src/DocMind.ServiceDefaults/DocMind.ServiceDefaults.csproj" />
+    <Project Path="src/DocMind.Worker/DocMind.Worker.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DocMind.ArchitectureTests/DocMind.ArchitectureTests.csproj" />
+    <Project Path="tests/DocMind.IntegrationTests/DocMind.IntegrationTests.csproj" />
+    <Project Path="tests/DocMind.UnitTests/DocMind.UnitTests.csproj" />
+  </Folder>
+</Solution>
