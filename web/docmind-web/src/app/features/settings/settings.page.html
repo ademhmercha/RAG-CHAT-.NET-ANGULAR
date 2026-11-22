@@ -1,0 +1,75 @@
+<div class="dm-page settings">
+  <h1 class="dm-page-title">{{ 'settings.title' | transloco }}</h1>
+
+  <section class="card" aria-labelledby="profile-title">
+    <h2 id="profile-title" class="card-title">{{ 'settings.profile.title' | transloco }}</h2>
+    <div class="profile">
+      <div class="avatar" aria-hidden="true">{{ auth.initials() }}</div>
+      <dl class="details">
+        <div>
+          <dt>{{ 'auth.fields.displayName' | transloco }}</dt>
+          <dd data-testid="profile-name">{{ auth.user()?.displayName }}</dd>
+        </div>
+        <div>
+          <dt>{{ 'auth.fields.email' | transloco }}</dt>
+          <dd data-testid="profile-email">{{ auth.user()?.email }}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="appearance-title">
+    <h2 id="appearance-title" class="card-title">{{ 'settings.appearance.title' | transloco }}</h2>
+
+    <div class="row">
+      <div class="row-text">
+        <span class="row-label" id="theme-label">{{ 'layout.theme' | transloco }}</span>
+        <span class="row-hint">{{ 'settings.appearance.themeHint' | transloco }}</span>
+      </div>
+      <mat-button-toggle-group
+        aria-labelledby="theme-label"
+        hideSingleSelectionIndicator
+        [value]="theme.preference()"
+        (change)="setTheme($event.value)"
+      >
+        @for (option of themes; track option) {
+          <mat-button-toggle [value]="option">
+            <mat-icon aria-hidden="true">{{ themeIcon(option) }}</mat-icon>
+            {{ 'theme.' + option | transloco }}
+          </mat-button-toggle>
+        }
+      </mat-button-toggle-group>
+    </div>
+
+    <div class="row">
+      <div class="row-text">
+        <span class="row-label" id="language-label">{{ 'layout.language' | transloco }}</span>
+        <span class="row-hint">{{ 'settings.appearance.languageHint' | transloco }}</span>
+      </div>
+      <mat-button-toggle-group
+        aria-labelledby="language-label"
+        hideSingleSelectionIndicator
+        [value]="language()"
+        (change)="setLanguage($event.value)"
+      >
+        @for (code of languages; track code) {
+          <mat-button-toggle [value]="code">{{ 'language.' + code | transloco }}</mat-button-toggle>
+        }
+      </mat-button-toggle-group>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="session-title">
+    <h2 id="session-title" class="card-title">{{ 'settings.session.title' | transloco }}</h2>
+    <div class="row">
+      <div class="row-text">
+        <span class="row-label">{{ 'auth.signOut' | transloco }}</span>
+        <span class="row-hint">{{ 'settings.session.hint' | transloco }}</span>
+      </div>
+      <button mat-stroked-button type="button" (click)="signOut()">
+        <mat-icon>logout</mat-icon>
+        {{ 'auth.signOut' | transloco }}
+      </button>
+    </div>
+  </section>
+</div>
