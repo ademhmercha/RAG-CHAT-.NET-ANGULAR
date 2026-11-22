@@ -2,7 +2,7 @@
 
 An enterprise assistant built on retrieval-augmented generation (RAG). Users upload PDF and DOCX documents, then ask questions; the assistant answers from their own documents, streams the answer and cites its sources (document, page, excerpt).
 
-This repository contains the .NET backend. A frontend (`web/docmind-web`, Angular) and the AWS infrastructure (`infra/`) are separate phases.
+This repository contains the .NET backend and the Angular web client ([`web/docmind-web`](web/docmind-web/README.md)). The AWS infrastructure (`infra/`) is a separate phase.
 
 ## Highlights
 
