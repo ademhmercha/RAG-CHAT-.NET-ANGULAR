@@ -1,0 +1,3 @@
+[*.cs]
+# EF Core materializes entities through private parameterless constructors.
+dotnet_diagnostic.S1144.severity = none
