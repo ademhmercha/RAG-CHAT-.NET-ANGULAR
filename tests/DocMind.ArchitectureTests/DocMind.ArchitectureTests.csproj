@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="NetArchTest.Rules" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\DocMind.Api\DocMind.Api.csproj" />
+    <ProjectReference Include="..\..\src\DocMind.Application\DocMind.Application.csproj" />
+    <ProjectReference Include="..\..\src\DocMind.Domain\DocMind.Domain.csproj" />
+    <ProjectReference Include="..\..\src\DocMind.Infrastructure\DocMind.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\DocMind.McpServer\DocMind.McpServer.csproj" />
+    <ProjectReference Include="..\..\src\DocMind.Worker\DocMind.Worker.csproj" />
+  </ItemGroup>
+
+</Project>
