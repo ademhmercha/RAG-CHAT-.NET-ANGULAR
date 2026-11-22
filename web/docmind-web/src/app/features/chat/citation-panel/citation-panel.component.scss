@@ -1,0 +1,124 @@
+:host {
+  display: block;
+  height: 100%;
+  min-height: 0;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-left: 1px solid var(--mat-sys-outline-variant);
+  background: var(--mat-sys-surface-container-low);
+  animation: dm-panel-in 0.2s ease-out;
+}
+
+.header {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3.5rem;
+  padding: 0 0.5rem 0 1rem;
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+}
+
+.badge {
+  display: grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+  font: var(--mat-sys-label-medium);
+}
+
+.title {
+  flex: 1;
+  margin: 0;
+  font: var(--mat-sys-title-medium);
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-height: 0;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.document {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: var(--mat-sys-corner-medium);
+  background: var(--mat-sys-surface-container-high);
+
+  mat-icon {
+    flex: none;
+    color: var(--mat-sys-primary);
+  }
+}
+
+.document-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.document-name {
+  overflow-wrap: anywhere;
+}
+
+.document-meta,
+.unavailable {
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-body-small);
+}
+
+.unavailable {
+  color: var(--mat-sys-error);
+}
+
+.excerpt-title {
+  margin: 0 0 0.5rem;
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-label-large);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.excerpt {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid var(--mat-sys-primary);
+  border-radius: 0 var(--mat-sys-corner-small) var(--mat-sys-corner-small) 0;
+  background: color-mix(in srgb, var(--mat-sys-primary) 8%, transparent);
+  font: var(--mat-sys-body-medium);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.footer {
+  flex: none;
+  padding: 0.5rem;
+  border-top: 1px solid var(--mat-sys-outline-variant);
+}
+
+@keyframes dm-panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    animation: none;
+  }
+}

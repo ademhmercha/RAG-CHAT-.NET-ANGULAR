@@ -1,0 +1,52 @@
+<aside
+  class="panel"
+  [attr.aria-label]="'chat.citations.panelTitle' | transloco"
+  data-testid="citation-panel"
+>
+  <header class="header">
+    <span class="badge" aria-hidden="true">{{ index() + 1 }}</span>
+    <h2 class="title">{{ 'chat.citations.panelTitle' | transloco }} {{ index() + 1 }}</h2>
+    <button
+      mat-icon-button
+      type="button"
+      class="close"
+      (click)="closed.emit()"
+      [attr.aria-label]="'chat.citations.close' | transloco"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </header>
+
+  <div class="content">
+    <section class="document" [attr.aria-label]="'chat.citations.document' | transloco">
+      <mat-icon aria-hidden="true">description</mat-icon>
+      <div class="document-details">
+        <strong class="document-name">{{ citation().documentName }}</strong>
+        <span class="document-meta">
+          {{ 'chat.citations.page' | transloco: { page: citation().page } }}
+          @if (source.hasValue() && source.value(); as document) {
+            · {{ 'chat.citations.totalPages' | transloco: { count: document.pageCount } }} ·
+            {{ document.sizeBytes | dmBytes: language() }}
+          }
+        </span>
+        @if (source.isLoading()) {
+          <dm-skeleton width="8rem" />
+        } @else if (source.error()) {
+          <span class="unavailable">{{ 'chat.citations.unavailable' | transloco }}</span>
+        }
+      </div>
+    </section>
+
+    <section [attr.aria-label]="'chat.citations.excerpt' | transloco">
+      <h3 class="excerpt-title">{{ 'chat.citations.excerpt' | transloco }}</h3>
+      <blockquote class="excerpt">{{ citation().excerpt }}</blockquote>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <a mat-button routerLink="/documents">
+      <mat-icon>folder_open</mat-icon>
+      {{ 'chat.citations.openDocuments' | transloco }}
+    </a>
+  </footer>
+</aside>
