@@ -55,4 +55,11 @@ builder.AddDotnetProject("worker", "../DocMind.Worker/DocMind.Worker.csproj")
     .WithEnvironment("Ai__Ollama__ChatModel", ChatModel)
     .WithEnvironment("Ai__Ollama__EmbeddingModel", EmbeddingModel);
 
+builder.AddJavaScriptApp("web", "../../web/docmind-web", "start")
+    .WithNpm(install: true)
+    .WithHttpEndpoint(env: "PORT")
+    .WithEnvironment("API_URL", api.GetEndpoint("http"))
+    .WaitFor(api)
+    .WithExternalHttpEndpoints();
+
 await builder.Build().RunAsync();
